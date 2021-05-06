@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+        <record id="popup_view_form" model="ir.ui.view">
+            <field name="name">create.popup.wizard</field>
+            <field name="model">create.popup</field>
+            <field name="arch" type="xml">
+                <form string="Choose where you want to go" version="7.0">
+                    <group>
+                        <field name="destination"/>
+                        <field name="some_info" readonly="1"/>
+                    </group>
+                    <footer>
+                        <button name="create_popup" string="Go to" type="object" class="btn-primary"
+                                context="{'destination':destination}"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="create_popup_wizard" model="ir.actions.act_window">
+            <field name="name">Fill up the information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">create.popup</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="popup_view_form"/>
+            <field name="target">new</field>
+
+        </record>
+    </data>
+</odoo>

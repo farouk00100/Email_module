@@ -1,0 +1,19 @@
+<odoo>
+    <record id="open_window_form" model="ir.ui.view">
+        <field name="name">open.window.form</field>
+        <field name="model">open.window</field>
+        <field name="arch" type="xml">
+            <form create="false" edit="false" string="Choose where you want to go" version="7.0">
+                <center>
+                    <iframe allowfullscreen="" frameborder="0" height="1000px" src="https://www.office.com/" width="100%">
+                        Your browser doesn't support frames. To view this page please user supporting browsers as Firefox.
+
+                    </iframe>
+                </center>
+            </form>
+        </field>
+    </record>
+
+
+
+</odoo>

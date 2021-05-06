@@ -1,0 +1,106 @@
+<odoo>
+    <data>
+
+        <!-- tree view -->
+        <record id="user_tree" model="ir.ui.view">
+            <field name="name">popup.users.tree</field>
+            <field name="model">popup.users</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="destination"/>
+                    <field name="link"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- form view -->
+        <record id="popup_user_form" model="ir.ui.view">
+            <field name="name">popup.users.form</field>
+            <field name="model">popup.users</field>
+            <field name="arch" type="xml">
+
+                <form string="Users" version="7.0">
+                    <header>
+
+                        <button name="%(popup.create_popup_wizard)d" string="Create popup opt1" type="action"
+                                class="btn-primary"/>
+
+                        <button name="call_func" string="Create popup opt2" type="object" class="btn-secondary"
+                                context="{'destination':destination}"/>
+
+                        <button name="%(popup.create_popup2_wizard)d" string="Create popup opt3" type="action"
+                                class="btn-primary"/>
+                    </header>
+                    <sheet> <!-- for better structure like container -->
+                        <group>
+                            <field name="destination"/>
+                            <field name="link" readonly="1"/> <!-- name is from users.py in models -->
+                        </group>
+                    </sheet>
+
+                </form>
+            </field>
+        </record>
+
+        <!-- kanban view-->
+        <record id="view_users_kanban" model="ir.ui.view">
+            <field name="name">popup.users.kanban</field>
+            <field name="model">popup.users</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="destination"/>
+                    <field name="link"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <div class="oe_kanban_details">
+                                    <ul>
+                                        <li>
+                                            Destination: <field name="destination"/>
+                                        </li>
+                                        <li>
+                                            Link: <field name="link"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+
+                </kanban>
+            </field>
+        </record>
+
+        <!-- action for the menu -->
+        <record id="popup_action" model="ir.actions.act_window">
+            <field name="name">Records</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">popup.users</field>
+            <field name="view_mode">tree,kanban,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a popup window
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem
+                id="popup_root"
+                name="Popup"
+                sequence="10"/>
+        <menuitem
+                id="popup_submenu_root"
+                name="More"
+                parent="popup_root"
+                sequence="10"/>
+        <menuitem
+                id="popup_subsub1"
+                name="Home"
+                parent="popup_submenu_root"
+                action="popup_action"
+                sequence="10"/>
+
+    </data>
+</odoo>

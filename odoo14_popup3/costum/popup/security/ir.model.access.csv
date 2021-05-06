@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_popup_users,access.popup.users,model_popup_users,,1,1,1,1
+access_open.window,access.open.window,model_open_window,,1,1,1,1
+access_create_popup,access.create.popup,model_create_popup,,1,1,1,1
+access_create_popup2,access.create.popup2,model_create_popup2,,1,1,1,1
